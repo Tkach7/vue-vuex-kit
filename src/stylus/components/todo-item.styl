@@ -1,0 +1,35 @@
+.todo-item
+    padding 5px 0
+    display flex
+    justify-content space-between
+    align-items center
+    
+    &__title
+        display inline-block
+        border-bottom 1px solid #aaa
+        width 80%
+        padding 7px 0
+        
+    &__input
+        display flex
+        border-bottom 1px solid #aaa
+        width 80%
+    
+    &__delete__small
+        display none
+        background url("../img/icons/delete.png") no-repeat
+        width 16px
+        height 16px
+        border none
+        outline none
+        
+.input-todo
+    margin-left 10px
+    width 95%
+    border none
+    text-decoration none
+    outline none
+
+.check-todo:checked ~ .input-todo
+    text-decoration line-through
+    color #aaa

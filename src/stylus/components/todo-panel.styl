@@ -1,0 +1,37 @@
+.todo-panel
+    background #fff
+    padding 10px
+    
+    &__inp
+        display flex
+        justify-content space-between
+        align-items center
+    
+    &__add
+        float right
+        &__small
+            display none
+            background url("../img/icons/add.png") no-repeat
+            width 16px
+            height 16px
+            border none
+            outline none
+        
+    &__del-all,
+    &__select-all
+        display inline-block
+        color #aaa
+        border 1px solid #aaa
+        padding 0 10px
+        border-radius 10px
+        cursor pointer
+                
+    &__select-all
+        margin-left 20px
+    
+    &__ctrl
+        margin-bottom 20px
+        
+.todo__input__wrap
+    display inline-block
+    width 80%
