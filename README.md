@@ -4,9 +4,9 @@
 simple crud with vue/vuex framework
 
 # Details
-Auth: OAuth2 (Firebase)
-Database: Firebase Live Storage
-Assembly: Webpack2
+* Auth: OAuth2 (Firebase)
+* Database: Firebase Live Storage
+* Assembly: Webpack2
 
 
 ### Requirements
