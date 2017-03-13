@@ -7,6 +7,10 @@
     "start": "node live-server",
     "test": "./node_modules/.bin/gulp test"
   },
+  "engines": {
+    "node": "^6.9.5"
+  },
+  "repository": "https://github.com/Tkach7/vue-vuex-kit",
   "author": "Tkach Daniil",
   "license": "ISC",
   "dependencies": {
