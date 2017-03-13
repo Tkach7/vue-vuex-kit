@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node live-server",
+    "start": "node ./server.js",
+    "dev": "gulp",
     "test": "./node_modules/.bin/gulp test"
   },
   "engines": {
@@ -15,9 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "crypto-js": "^3.1.9-1",
+    "express": "^4.15.2",
     "firebase": "^3.7.0",
     "json-loader": "^0.5.4",
-    "live-server": "^1.2.0",
     "moment": "^2.17.1",
     "pug": "^2.0.0-beta11",
     "vue": "^2.2.1",
@@ -35,12 +36,13 @@
     "eslint-plugin-vue": "^2.0.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-develop-server": "^0.5.2",
     "gulp-eslint": "^3.0.1",
     "gulp-if": "^2.0.2",
     "gulp-plumber": "^1.1.0",
     "gulp-stylus": "^2.6.0",
     "gulp-uglify": "^2.0.1",
-    "localtunnel": "^1.8.2",
+    "morgan": "^1.8.1",
     "pug-html-loader": "^1.1.1",
     "raw-loader": "^0.5.1",
     "stylus-loader": "^2.5.0",

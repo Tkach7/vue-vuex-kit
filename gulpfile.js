@@ -14,7 +14,12 @@ const webpackOptions = require('./webpack.options');
 const dev = process.env.NODE_ENV != 'production';
 
 /** @gulp: default*/
-gulp.task('default', ['dist', 'watch']);
+gulp.task('default', ['dist', 'watch'], () => {
+    require('gulp-develop-server').listen({
+        path: './server.js',
+        execArgv: ['--harmony'],
+    });
+});
 
 /** @gulp: default -> dist */
 gulp.task('dist', ['js', 'bootstrapCss', 'assets'], () => {
