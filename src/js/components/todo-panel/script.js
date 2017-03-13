@@ -48,7 +48,7 @@ const methods = {
     selectAll() {
         if (this.todos.length > 0) {
             this.$store.commit('SELECT_ALL_TODO');
-            let todos = getOnlyOneField(this.todos, 'id');
+            let todos = getFormDbType(this.todos, 'id');
             database.updateTodos(null, todos, null, null);
         }
     }
