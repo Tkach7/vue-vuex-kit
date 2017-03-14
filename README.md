@@ -1,4 +1,4 @@
-# [vue-vuex-kit] (https://limitless-garden-64921.herokuapp.com/)
+# [vue-vuex-kit](https://limitless-garden-64921.herokuapp.com/)
 
 # CRUD with vue + vues
 simple crud with vue/vuex framework
