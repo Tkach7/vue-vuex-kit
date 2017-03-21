@@ -1,10 +1,11 @@
 import firebase from 'firebase'
 
 export default class Db {
-    constructor() {
-        this.ref = firebase.database().ref('/todos/');
+    constructor(userId) {
+        this.ref = firebase.database().ref(userId + '/todos/');
         this.todos = [];
         this.db = firebase.database();
+        this.userId = userId;
     }
 
     /** Get todos from database */
@@ -33,9 +34,9 @@ export default class Db {
     updateTodos(idTodo, todos, field, value) {
         let updates = {};
         if (idTodo) {
-            updates['/todos/' + idTodo + '/' + field] = value;
+            updates[this.userId + '/todos/' + idTodo + '/' + field] = value;
         } else {
-            updates['/todos/'] = todos;
+            updates[this.userId + '/todos/'] = todos;
         }
         this.db.ref().update(updates);
     }

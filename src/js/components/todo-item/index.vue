@@ -1,5 +1,5 @@
 <template lang="pug">
-    section.todo-item
+    section.todo-item {{id}}
         section.todo-item__input
             input(type="checkbox" class="check-todo" name="todoCheck" v-on:click="changeStatus(todo.id)" v-bind:checked = "todo.done")
             input(type="text" class="input-todo" v-bind:value="todo.title" v-on:change="changeTodo($event, todo.id)")

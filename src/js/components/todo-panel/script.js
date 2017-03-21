@@ -9,12 +9,11 @@ const data = () => {
     }
 }
 
-/** Define database */
-const database = new Db();
-
 const methods = {
     /** Add a new Todo in state */
     add() {
+        /** Define database */
+        let database = new Db(this.userId);
         let todo = {
             title: this.todoTitle,
             id: CryptoJS.lib.WordArray.random(256 / 64).toString(),
@@ -36,6 +35,8 @@ const methods = {
      * Delete all todo in list.
     */
     deleteAll() {
+        /** Define database */
+        let database = new Db(this.userId);
         if (this.todos.length > 0) {
             this.$store.commit('DELETE_ALL');
             database.updateTodos(null, [], null, null);
@@ -46,6 +47,8 @@ const methods = {
      * Select all todo in list.
     */
     selectAll() {
+        /** Define database */
+        let database = new Db(this.userId);
         if (this.todos.length > 0) {
             this.$store.commit('SELECT_ALL_TODO');
             let todos = getFormDbType(this.todos, 'id');
@@ -71,7 +74,9 @@ function getFormDbType(todos, field) {
 
 const computed = mapState({
     /** Get todos from state */
-    todos: state => state.todos
+    todos: state => state.todos,
+    /** Get user id from state user */
+    userId: state => state.user.id
 });
 
 export default {

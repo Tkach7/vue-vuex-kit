@@ -9,13 +9,11 @@ firebase.initializeApp(firebaseConf);
 
 /** Define Auth provider */
 const Auth = new AuthProvider();
-
-/** Define Database */
-const database = new Db();
-
 /** Boot up */
 Auth.getUser().then(async user => {
     let todos = [];
+    /** Define Database */
+    const database = new Db(user.id);
     /** Load todos from database */
     await database.getTodos().then(currentTodos => {
         todos = currentTodos;
