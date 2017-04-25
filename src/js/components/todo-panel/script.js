@@ -1,7 +1,6 @@
 import Db from '../../libs/database'
-import { mapMutations } from 'vuex'
-import { mapState } from 'Vuex'
-import CryptoJS from 'crypto-js';
+import { mapMutations, mapActions, mapState } from 'vuex'
+import CryptoJS from 'crypto-js'
 
 const data = () => {
     return {
@@ -10,19 +9,16 @@ const data = () => {
 }
 
 const methods = {
+    ...mapActions(['add_todo', 'delete_all', 'select_all']),
     /** Add a new Todo in state */
     add() {
-        /** Define database */
-        let database = new Db(this.userId);
         let todo = {
             title: this.todoTitle,
             id: CryptoJS.lib.WordArray.random(256 / 64).toString(),
             done: false
         };
-        this.$store.commit('ADD_TODO', todo);
+        this.add_todo(todo);
         this.todoTitle = '';
-        /** Add todo in db. */
-        database.updateTodos(todo.id, [], '', todo);
     },
     /**
      * Check length todo title
@@ -35,11 +31,8 @@ const methods = {
      * Delete all todo in list.
     */
     deleteAll() {
-        /** Define database */
-        let database = new Db(this.userId);
         if (this.todos.length > 0) {
-            this.$store.commit('DELETE_ALL');
-            database.updateTodos(null, [], null, null);
+            this.delete_all();
         }
 
     },
@@ -47,12 +40,9 @@ const methods = {
      * Select all todo in list.
     */
     selectAll() {
-        /** Define database */
-        let database = new Db(this.userId);
         if (this.todos.length > 0) {
-            this.$store.commit('SELECT_ALL_TODO');
             let todos = getFormDbType(this.todos, 'id');
-            database.updateTodos(null, todos, null, null);
+            this.select_all(todos);
         }
     }
 }

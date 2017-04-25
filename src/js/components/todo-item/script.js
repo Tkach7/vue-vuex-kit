@@ -1,33 +1,27 @@
 import Db from '../../libs/database'
-import { mapState } from 'Vuex'
+import { mapState, mapActions  } from 'Vuex'
 
 const data = () => {
     return {
-        name: 'todoItem',
-        id: this.userId
+        name: 'todoItem'
     }
 }
 
 const methods = {
+    ...mapActions(['delete_todo', 'change_todo', 'change_status']),
     /**
      * Delete todo in list by id.
      * @param {Number} todo id.
     */
     deleteTodo(id) {
-        /** Define database */
-        let database = new Db(this.userId);
-        this.$store.commit('DELETE_TODO', id);
-        database.updateTodos(id, [], '', null);
+        this.delete_todo(id);
     },
     /**
      * Change todo status.
      * @param {Number} todo id.
     */
     changeStatus(id) {
-        /** Define database */
-        let database = new Db(this.userId);
-        this.$store.commit('CHANGE_TODO_STATUS', id);
-        database.updateTodos(id, [], 'done', this.todo.done);
+        this.change_status({id, done: !this.todo.done});
     },
     /**
      * Change todo title
@@ -35,11 +29,7 @@ const methods = {
      * @param {String} new todo title value..
     */
     changeTodo(e, id) {
-        /** Define database */
-        let database = new Db(this.userId);
-        let payload = {id, title: e.target.value};
-        this.$store.commit('CHANGE_TODO_TITLE', payload);
-        database.updateTodos(id, [], 'title', e.target.value);
+        this.change_todo({title: e.target.value, id});
     }
 };
 

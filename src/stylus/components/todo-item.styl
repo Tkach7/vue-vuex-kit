@@ -3,6 +3,7 @@
     display flex
     justify-content space-between
     align-items center
+    font-size 15px
     
     &__title
         display inline-block
@@ -14,10 +15,17 @@
         display flex
         border-bottom 1px solid #aaa
         width 80%
+        
+        & > input
+            font-size 15px
+            
+    &__delete
+        font-size 15px
+        color #fff
     
     &__delete__small
         display none
-        background url("../img/icons/delete.png") no-repeat
+        background url("/assets/img/icons/delete.png") no-repeat
         width 16px
         height 16px
         border none

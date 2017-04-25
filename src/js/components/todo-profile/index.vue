@@ -8,6 +8,8 @@
             .profile__mail
                 span {{user.email}}
         button(class="btn btn-default profile__sign-out" v-on:click="signOut") Exit
+        article.profile__session-wrap
+            user-session
 </template>
 
 <script src="./script.js"></script>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 //** import Guest components */
-import Auth from '../routes/auth'
+import Auth from '../routes/auth/index.vue'
 
 const routes = [
     { path: '/', name: 'Auth', component: Auth }

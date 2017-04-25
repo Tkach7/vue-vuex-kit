@@ -1,0 +1,25 @@
+.profile__session-wrap
+    clear right
+
+.session
+    input
+        display none
+    
+    input:checked ~ &__list
+        display block
+        
+    &__show
+        text-align center
+        color #1883bb
+        
+    &__list
+        display none
+        background #f9f9f9
+        padding 10px
+
+.show__text
+    cursor pointer
+    border-bottom 1px solid #1883bb
+    
+.show__text--hover:hover
+    border-bottom none

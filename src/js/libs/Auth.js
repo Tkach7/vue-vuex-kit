@@ -1,4 +1,6 @@
 import firebase from 'firebase'
+import Db from './database.js'
+import parseAgent from './parse.js'
 
 export default class Auth {
     constructor() {
@@ -37,17 +39,11 @@ export default class Auth {
     signIn(redirect = '/') {
         /** Github OAuth2 provider */
         const provider = new this.db.auth.GithubAuthProvider();
-
         /** Sign with OAuth provider */
         this.db.auth().signInWithPopup(provider).then(response => {
-            this.user = {
-                icon: response.user.photoURL,
-                email: response.user.email,
-                id: response.user.uid,
-                name: response.user.displayName,
-                token: response.user.refreshToken,
-            };
-
+            let database = new Db(response.user.uid);
+            let session = parseAgent(navigator.userAgent);
+            database.setSession(session);
             /** Refresh Application */
             window.location.href = redirect;
         });
